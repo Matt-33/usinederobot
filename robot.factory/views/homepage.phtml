@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Creator</title>
+</head>
+<body>
+    <h1>Robot Creator</h1>
+
+    <?php if (!isset($_POST['robot_name'])) : ?>
+        <!-- Formulaire -->
+        <form method="post" action="index.php">
+        <label for="robot_name">Nom du robot :</label><br>
+        <input type="text" id="robot_name" name="robot_name"><br><br>
+            
+        <label for="familiarity">Familiarité du robot :</label><br>
+        <select id="familiarity" name="familiarity">
+                <option value="random">Aléatoire</option>
+                <option value="familiar">Familier</option>
+                <option value="unfamiliar">Non familier</option>
+</select><br><br>
+            
+
+            <input type="submit" name="submit" value="Créer le robot">
+        </form>
+    <?php else : ?>
+        <!-- Détails du robot -->
+        <h2>Détails du Robot</h2>
+        <p>Salut, humain. Je suis <?= $robotDetails['name'] ?>.</p>
+        <p>Nous sommes le <?= $robotDetails['date'] ?>.</p>
+        <p><?= $robotDetails['choice'] ?></p>
+        <p>J'ai choisi le nombre <?= $robotDetails['random_number'] ?>. C'est un nombre <?= $robotDetails['number_type'] ?>.</p>
+        <p>Mon nom à l'envers s'écrit <?= $robotDetails['reverse_name'] ?>. Ah. Ah. Ah.</p>
+        <p>Les 100 premiers nombres de la suite de Fibonacci sont :<br> <?= $robotDetails['fibonacci_sequence'] ?> ...</p>
+        <p>Familiarité sélectionnée : <?= $robotDetails['familiarity'] ?></p>
+    <?php endif; ?>
+</body>
+</html>
